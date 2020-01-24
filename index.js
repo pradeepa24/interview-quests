@@ -312,3 +312,46 @@ function patternMatching(str1,str2){
     return result;
     }
     console.log(migratoryBirds([1,2,3,4,5,4,3,2,1,3,4]));  
+    function sockMerchant(n, ar) {
+      let res = [];
+      let final=0;
+     ar.forEach((el,ind)=>{
+       if(!(res.find((socks)=> socks.color === el))){
+        res.push({color:el,count:1});
+       } else{
+         let index = res.findIndex((socks)=>el === socks.color);
+         res[index].count++;
+       }
+     })
+   res.forEach((el)=>{
+     if(el.count !== 1){
+      // console.log(el)
+       final += Math.floor(el.count / 2);
+      } 
+   })
+   return final;
+  }
+  console.log(sockMerchant(9,[10,20,20,10,10,30,50,10,20]));
+  function pageCount(n, p) {
+    let countFromStart=0;
+    let countFromEnd = 0;
+    let start = 0;
+    let end = n;
+       while(start<p){
+         if(start%2 !== 0){
+           countFromStart++;
+         }
+         start += 1;
+       }
+       while(end>p){
+         if(end%2 === 0){
+              countFromEnd++;
+         }
+        
+         end -= 1;
+       }
+      //  console.log(countFromStart);
+      //  console.log(countFromEnd);
+  return (countFromStart > countFromEnd) ? countFromEnd : countFromStart;
+  }
+  console.log(pageCount(6,2));
